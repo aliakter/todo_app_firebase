@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, sized_box_for_whitespace, sort_child_properties_last
 
 import 'package:flutter/material.dart';
+import 'package:todo_app_firebase/page/about.dart';
+import 'package:todo_app_firebase/page/contact.dart';
+import 'package:todo_app_firebase/screen/home_screen.dart';
 import 'package:todo_app_firebase/style/app_style.dart';
 
 class NavigationDrawerWidget extends StatelessWidget {
@@ -11,22 +14,50 @@ class NavigationDrawerWidget extends StatelessWidget {
     return Drawer(
       backgroundColor: AppStyle.appColors,
       child: ListView(
+        padding: EdgeInsets.zero,
         children: [
-          DrawerHeader(
-            child: Container(
-              height: 20,
-              width: 40,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.asset(
-                  'assets/images/removebg-preview.png',
-                ),
-              ),
-            ),
-            decoration: BoxDecoration(
-              color: Color.fromARGB(255, 98, 136, 167),
+          // DrawerHeader(
+          //   decoration: BoxDecoration(color: AppStyle.appColors),
+          //   child: CircleAvatar(
+          //     backgroundImage: AssetImage(
+          //       'assets/images/IMG_20211217_125612.png',
+          //     ),
+          //     // child: Image(
+          //     //     image: AssetImage('assets/images/IMG_20211217_125612.png')),
+          //   ),
+          // ),
+          UserAccountsDrawerHeader(
+            accountName: Text("Ali Akter"),
+            accountEmail: Text("aliakter176162@gmail.com"),
+            currentAccountPicture: CircleAvatar(
+              backgroundImage:
+                  AssetImage("assets/images/IMG_20211217_125612.png"),
             ),
           ),
+          ListTile(
+            leading: Icon(Icons.home, color: Colors.white),
+            title: Text("Home", style: TextStyle(color: Colors.white)),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()));
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.account_box, color: Colors.white),
+            title: Text("About", style: TextStyle(color: Colors.white)),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => About()));
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.contact_mail, color: Colors.white),
+            title: Text("Contact", style: TextStyle(color: Colors.white)),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Contact()));
+            },
+          )
         ],
       ),
     );
