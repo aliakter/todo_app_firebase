@@ -2,6 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app_firebase/screen/drawer.dart';
 import 'package:todo_app_firebase/screen/todo_editor.dart';
@@ -21,7 +22,23 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppStyle.whiteColor,
-      appBar: _buildAppBar(),
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: AppStyle.appColors,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomRight: Radius.circular(20.r),
+            bottomLeft: Radius.circular(20.r),
+          ),
+        ),
+        title: Text(
+          "ToDo",
+          style: TextStyle(
+            fontSize: 27.sp,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
       drawer: NavigationDrawerWidget(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -32,12 +49,12 @@ class _HomeScreenState extends State<HomeScreen> {
             Text(
               "Your recent Notes",
               style: GoogleFonts.roboto(
+                fontSize: 20.sp,
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
-                fontSize: 20,
               ),
             ),
-            SizedBox(height: 10.0),
+            SizedBox(height: 10.h),
             Expanded(
               child: StreamBuilder<QuerySnapshot>(
                 stream:
@@ -73,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     );
                   }
                   return Text(
-                    "ther's no Notes",
+                    "There's no Notes",
                     style: GoogleFonts.nunito(color: Colors.white),
                   );
                 },
@@ -93,24 +110,4 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-}
-
-AppBar _buildAppBar() {
-  return AppBar(
-    elevation: 0,
-    backgroundColor: AppStyle.appColors,
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.only(
-        bottomRight: Radius.circular(20),
-        bottomLeft: Radius.circular(20),
-      ),
-    ),
-    title: Text(
-      "ToDo",
-      style: TextStyle(
-        fontSize: 27,
-        fontWeight: FontWeight.bold,
-      ),
-    ),
-  );
 }

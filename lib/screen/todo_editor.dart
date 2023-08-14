@@ -3,6 +3,7 @@
 import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo_app_firebase/style/app_style.dart';
 
 class TodoEditor extends StatefulWidget {
@@ -42,14 +43,17 @@ class _TodoEditorState extends State<TodoEditor> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                height: 60,
-                width: 350,
-                padding: EdgeInsets.symmetric(horizontal: 18, vertical: 10),
+                height: 60.h,
+                width: 350.w,
+                padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 10.h),
                 decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10)),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10.r),
+                ),
                 child: TextField(
                   controller: _titleController,
+                  keyboardType: TextInputType.text,
+                  textInputAction: TextInputAction.next,
                   style: AppStyle.mainTitle,
                   decoration: InputDecoration(
                     border: InputBorder.none,
@@ -57,20 +61,22 @@ class _TodoEditorState extends State<TodoEditor> {
                   ),
                 ),
               ),
-              SizedBox(height: 10.0),
+              SizedBox(height: 10.h),
               Text(date, style: AppStyle.dateTitle),
-              SizedBox(height: 20.0),
+              SizedBox(height: 20.h),
               Container(
-                height: 260,
-                width: 350,
-                padding: EdgeInsets.symmetric(horizontal: 18, vertical: 10),
+                height: 260.h,
+                width: 350.w,
+                padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 10.h),
                 decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10)),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10.r),
+                ),
                 child: TextField(
                   controller: _mainController,
                   style: AppStyle.mainContent,
-                  keyboardType: TextInputType.multiline,
+                  keyboardType: TextInputType.text,
+                  textInputAction: TextInputAction.done,
                   maxLines: null,
                   decoration: InputDecoration(
                     border: InputBorder.none,

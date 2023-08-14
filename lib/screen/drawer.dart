@@ -16,16 +16,6 @@ class NavigationDrawerWidget extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          // DrawerHeader(
-          //   decoration: BoxDecoration(color: AppStyle.appColors),
-          //   child: CircleAvatar(
-          //     backgroundImage: AssetImage(
-          //       'assets/images/IMG_20211217_125612.png',
-          //     ),
-          //     // child: Image(
-          //     //     image: AssetImage('assets/images/IMG_20211217_125612.png')),
-          //   ),
-          // ),
           UserAccountsDrawerHeader(
             accountName: Text("Ali Akter"),
             accountEmail: Text("aliakter176162@gmail.com"),
@@ -35,29 +25,55 @@ class NavigationDrawerWidget extends StatelessWidget {
             ),
           ),
           ListTile(
+            selectedColor: Colors.amber,
             leading: Icon(Icons.home, color: Colors.white),
-            title: Text("Home", style: TextStyle(color: Colors.white)),
+            title: Text(
+              "Home",
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => HomeScreen()));
+              Navigator.pop(context);
             },
           ),
           ListTile(
             leading: Icon(Icons.account_box, color: Colors.white),
-            title: Text("About", style: TextStyle(color: Colors.white)),
+            title: Text(
+              "About",
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
             onTap: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => About()));
+                context,
+                MaterialPageRoute(
+                  builder: (context) => About(),
+                ),
+              );
             },
           ),
           ListTile(
-            leading: Icon(Icons.contact_mail, color: Colors.white),
-            title: Text("Contact", style: TextStyle(color: Colors.white)),
+            leading: Icon(
+              Icons.contact_mail,
+              color: Colors.white,
+            ),
+            title: Text(
+              "Contact",
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
             onTap: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Contact()));
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Contact(),
+                ),
+              );
             },
-          )
+          ),
         ],
       ),
     );

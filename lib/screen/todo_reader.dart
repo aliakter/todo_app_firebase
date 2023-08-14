@@ -2,6 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo_app_firebase/style/app_style.dart';
 
 class TodoReader extends StatefulWidget {
@@ -26,16 +27,16 @@ class _TodoReaderState extends State<TodoReader> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: AppStyle.appColors,
-        shape: const RoundedRectangleBorder(
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
-            bottomRight: Radius.circular(20),
-            bottomLeft: Radius.circular(20),
+            bottomRight: Radius.circular(20.r),
+            bottomLeft: Radius.circular(20.r),
           ),
         ),
         title: Text(
           "ToDo Read",
           style: TextStyle(
-            fontSize: 27,
+            fontSize: 27.sp,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -62,12 +63,12 @@ class _TodoReaderState extends State<TodoReader> {
                 widget.documentSnapshot["title"],
                 style: AppStyle.mainTitle,
               ),
-              SizedBox(height: 5.0),
+              SizedBox(height: 5.h),
               Text(
                 widget.documentSnapshot["creation_date"],
                 style: AppStyle.dateTitle,
               ),
-              SizedBox(height: 20.0),
+              SizedBox(height: 20.h),
               Text(
                 widget.documentSnapshot["content"],
                 style: AppStyle.mainContent,
